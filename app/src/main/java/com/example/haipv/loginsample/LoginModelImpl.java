@@ -2,6 +2,12 @@ package com.example.haipv.loginsample;
 
 import android.os.AsyncTask;
 
+import com.example.haipv.loginsample.event.CanceledEvent;
+import com.example.haipv.loginsample.event.PasswordErrorEvent;
+import com.example.haipv.loginsample.event.SuccessEvent;
+
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * inner layer is business logic layer, where you resolve solve problems. <br/>
  * The layer does not contain any framework code, it is able to run it with out emulator <br/>
@@ -9,8 +15,6 @@ import android.os.AsyncTask;
  *
  */
 public class LoginModelImpl implements LoginModel {
-
-    private OnLoginFinishedListener listener;
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -22,12 +26,11 @@ public class LoginModelImpl implements LoginModel {
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
+            "test@gmail.com:test", "bar@example.com:world"
     };
 
     @Override
-    public void login(String username, String password, OnLoginFinishedListener listener) {
-        this.listener = listener;
+    public void login(String username, String password) {
         new UserLoginTask(username, password).execute((Void) null);
 
     }
@@ -73,15 +76,15 @@ public class LoginModelImpl implements LoginModel {
         protected void onPostExecute(final Boolean success) {
 
             if (success) {
-                listener.onSuccess();
+                EventBus.getDefault().post(new SuccessEvent());
             } else {
-                listener.onPasswordError();
+                EventBus.getDefault().post(new PasswordErrorEvent());
             }
         }
 
         @Override
         protected void onCancelled() {
-            listener.onCanceled();
+            EventBus.getDefault().post(new CanceledEvent());
         }
     }
 }

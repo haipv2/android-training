@@ -30,6 +30,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.haipv.loginsample.event.CanceledEvent;
+import com.example.haipv.loginsample.event.PasswordErrorEvent;
+import com.example.haipv.loginsample.event.SuccessEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
 //    private LoginModelImpl.UserLoginTask mAuthTask = null;
-    private LoginPresenter loginPresenter;
+//    private LoginPresenter loginPresenter;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -84,7 +92,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        loginPresenter = new LoginPresenterImpl(this);
+//        loginPresenter = new LoginPresenterImpl(this);
     }
 
     private void populateAutoComplete() {
@@ -149,7 +157,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         boolean cancel = false;
         View focusView = null;
 
-        loginPresenter.validateCredentials(email, password);
+//        loginPresenter.validateCredentials(email, password);
 
     }
 
@@ -201,12 +209,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void setPasswordError(int messageResId) {
         mPasswordView.setError(getString(messageResId));
         mPasswordView.requestFocus();
-    }
-
-    @Override
-    public void successAction() {
-        Toast.makeText(this, "SUCCESS ACTIVITY!!!", Toast.LENGTH_LONG);
-
     }
 
 //    @Override
@@ -263,6 +265,35 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         int IS_PRIMARY = 1;
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onSuccessEvent(SuccessEvent successEvent) {
+        showProgress(false);
+        Toast.makeText(this, "SUCCESS!!!", Toast.LENGTH_LONG);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onPasswordErrorEvnet(PasswordErrorEvent passwordErrorEvent) {
+        showProgress(false);
+        setPasswordError(R.string.error_incorrect_password);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onCanceledEvent(CanceledEvent canceledEvent) {
+        showProgress(false);
+    }
 
 }
 
