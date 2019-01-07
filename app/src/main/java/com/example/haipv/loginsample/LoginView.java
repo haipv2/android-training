@@ -1,6 +1,7 @@
 package com.example.haipv.loginsample;
 
 public interface LoginView {
+
     void showProgress(boolean showProgress);
 
     void setUsernameError(int messageResId);
@@ -8,5 +9,4 @@ public interface LoginView {
     void setPasswordError(int messageResId);
 
     void successAction();
-
 }
