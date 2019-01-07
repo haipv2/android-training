@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
 //    private LoginModelImpl.UserLoginTask mAuthTask = null;
-//    private LoginPresenter loginPresenter;
+    private LoginPresenter loginPresenter;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-//        loginPresenter = new LoginPresenterImpl(this);
+        loginPresenter = new LoginPresenterImpl(this);
     }
 
     private void populateAutoComplete() {
@@ -157,7 +157,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         boolean cancel = false;
         View focusView = null;
 
-//        loginPresenter.validateCredentials(email, password);
+        loginPresenter.validateCredentials(email, password);
 
     }
 
@@ -281,11 +281,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onSuccessEvent(SuccessEvent successEvent) {
         showProgress(false);
-        Toast.makeText(this, "SUCCESS!!!", Toast.LENGTH_LONG);
+        Toast.makeText(this, "SUCCESS!!!", Toast.LENGTH_LONG).show();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onPasswordErrorEvnet(PasswordErrorEvent passwordErrorEvent) {
+    public void onPasswordErrorEvent(PasswordErrorEvent passwordErrorEvent) {
         showProgress(false);
         setPasswordError(R.string.error_incorrect_password);
     }

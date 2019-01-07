@@ -78,7 +78,7 @@ public class LoginModelImpl implements LoginModel {
             if (success) {
                 EventBus.getDefault().post(new SuccessEvent());
             } else {
-                EventBus.getDefault().post(new PasswordErrorEvent());
+                EventBus.getDefault().post(new PasswordErrorEvent(R.string.error_incorrect_password));
             }
         }
 
