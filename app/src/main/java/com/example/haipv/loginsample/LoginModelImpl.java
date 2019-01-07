@@ -22,7 +22,7 @@ public class LoginModelImpl implements LoginModel {
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
+            "test@gmail.com:test", "bar@example.com:world"
     };
 
     @Override

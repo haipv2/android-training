@@ -22,7 +22,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnLoginFin
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password != null && password.length() > 1;
     }
 
     @Override
