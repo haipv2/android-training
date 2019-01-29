@@ -22,7 +22,8 @@ import java.io.ByteArrayOutputStream;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.galileo.android.photofeed.PhotoFeedApp;
 import edu.galileo.android.photofeed.R;
@@ -32,9 +33,9 @@ import edu.galileo.android.photofeed.photolist.ui.adapters.OnItemClickListener;
 import edu.galileo.android.photofeed.photolist.ui.adapters.PhotoListAdapter;
 
 public class PhotoListFragment extends Fragment implements PhotoListView, OnItemClickListener {
-    @Bind(R.id.container) RelativeLayout container;
-    @Bind(R.id.recyclerView) RecyclerView recyclerView;
-    @Bind(R.id.progressBar) ProgressBar progressBar;
+    @BindView(R.id.container) RelativeLayout container;
+    @BindView(R.id.recyclerView) RecyclerView recyclerView;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
     @Inject
     PhotoListAdapter adapter;
     @Inject

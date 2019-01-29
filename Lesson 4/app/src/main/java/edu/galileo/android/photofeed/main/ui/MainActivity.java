@@ -42,7 +42,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.galileo.android.photofeed.PhotoFeedApp;
@@ -55,11 +55,11 @@ import edu.galileo.android.photofeed.photomap.ui.PhotoMapFragment;
 
 public class MainActivity extends AppCompatActivity implements MainView, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.tabs)
+    @BindView(R.id.tabs)
     TabLayout tabLayout;
-    @Bind(R.id.viewPager)
+    @BindView(R.id.viewPager)
     ViewPager viewPager;
 
     @Inject

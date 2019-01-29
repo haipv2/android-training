@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.galileo.android.photofeed.R;
@@ -79,17 +79,17 @@ import edu.galileo.android.photofeed.lib.base.ImageLoader;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.imgAvatar)
+        @BindView(R.id.imgAvatar)
         CircleImageView imgAvatar;
-        @Bind(R.id.txtUser)
+        @BindView(R.id.txtUser)
         TextView txtUser;
-        @Bind(R.id.imgMain)
+        @BindView(R.id.imgMain)
         ImageView imgMain;
-        @Bind(R.id.txtPlace)
+        @BindView(R.id.txtPlace)
         TextView txtPlace;
-        @Bind(R.id.imgShare)
+        @BindView(R.id.imgShare)
         ImageButton btnShare;
-        @Bind(R.id.imgDelete)
+        @BindView(R.id.imgDelete)
         ImageButton btnDelete;
 
         public ViewHolder(View view) {

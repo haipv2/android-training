@@ -32,7 +32,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.galileo.android.photofeed.PhotoFeedApp;
@@ -43,7 +43,7 @@ import edu.galileo.android.photofeed.lib.base.ImageLoader;
 import edu.galileo.android.photofeed.photomap.PhotoMapPresenter;
 
 public class PhotoMapFragment extends Fragment implements PhotoMapView, OnMapReadyCallback, GoogleMap.InfoWindowAdapter {
-	@Bind(R.id.container)
+	@BindView(R.id.container)
 	FrameLayout container;
 
 	@Inject
