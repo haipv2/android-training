@@ -15,7 +15,7 @@ import com.facebook.share.widget.ShareButton;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.galileo.android.facebookrecipes.R;
 import edu.galileo.android.facebookrecipes.entities.Recipe;
@@ -73,17 +73,17 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.imgRecipe)
+        @BindView(R.id.imgRecipe)
         ImageView imgRecipe;
-        @Bind(R.id.txtRecipeName)
+        @BindView(R.id.txtRecipeName)
         TextView txtRecipeName;
-        @Bind(R.id.imgFav)
+        @BindView(R.id.imgFav)
         ImageButton imgFav;
-        @Bind(R.id.imgDelete)
+        @BindView(R.id.imgDelete)
         ImageButton imgDelete;
-        @Bind(R.id.fbShare)
+        @BindView(R.id.fbShare)
         ShareButton fbShare;
-        @Bind(R.id.fbSend)
+        @BindView(R.id.fbSend)
         SendButton fbSend;
 
         private View view;

@@ -12,7 +12,7 @@ import android.view.MenuItem;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.galileo.android.facebookrecipes.FacebookRecipesApp;
@@ -25,9 +25,9 @@ import edu.galileo.android.facebookrecipes.recipelist.ui.adapters.RecipesAdapter
 import edu.galileo.android.facebookrecipes.recipemain.ui.RecipeMainActivity;
 
 public class RecipeListActivity extends AppCompatActivity implements RecipeListView, OnItemClickListener {
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.recyclerView)
+    @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
     private RecipesAdapter adapter;

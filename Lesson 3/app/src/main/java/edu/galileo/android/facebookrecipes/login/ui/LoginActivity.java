@@ -16,15 +16,14 @@ import com.facebook.login.widget.LoginButton;
 
 import java.util.Arrays;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import edu.galileo.android.facebookrecipes.R;
 import edu.galileo.android.facebookrecipes.recipemain.ui.RecipeMainActivity;
 
 public class LoginActivity extends AppCompatActivity {
-    @Bind(R.id.btnLogin)
+    @BindView(R.id.btnLogin)
     LoginButton btnLogin;
-    @Bind(R.id.container)
+    @BindView(R.id.container)
     RelativeLayout container;
     private CallbackManager callbackManager;
 
@@ -63,13 +62,13 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AppEventsLogger.activateApp(this);
+//        AppEventsLogger.activateApp(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        AppEventsLogger.deactivateApp(this);
+//        AppEventsLogger.deactivateApp(this);
     }
 
     @Override

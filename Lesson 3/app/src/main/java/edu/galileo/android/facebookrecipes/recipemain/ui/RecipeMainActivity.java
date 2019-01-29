@@ -19,28 +19,28 @@ import android.widget.RelativeLayout;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.galileo.android.facebookrecipes.FacebookRecipesApp;
 import edu.galileo.android.facebookrecipes.R;
-import edu.galileo.android.facebookrecipes.recipelist.ui.RecipeListActivity;
 import edu.galileo.android.facebookrecipes.entities.Recipe;
 import edu.galileo.android.facebookrecipes.libs.base.ImageLoader;
+import edu.galileo.android.facebookrecipes.recipelist.ui.RecipeListActivity;
 import edu.galileo.android.facebookrecipes.recipemain.RecipeMainPresenter;
 import edu.galileo.android.facebookrecipes.recipemain.di.RecipeMainComponent;
 
 public class RecipeMainActivity extends AppCompatActivity implements RecipeMainView, SwipeGestureListener {
 
-    @Bind(R.id.imgRecipe)
+    @BindView(R.id.imgRecipe)
     ImageView imgRecipe;
-    @Bind(R.id.imgDismiss)
+    @BindView(R.id.imgDismiss)
     ImageButton imgDismiss;
-    @Bind(R.id.imgKeep)
+    @BindView(R.id.imgKeep)
     ImageButton imgKeep;
-    @Bind(R.id.progressBar)
+    @BindView(R.id.progressBar)
     ProgressBar progressBar;
-    @Bind(R.id.layoutContainer)
+    @BindView(R.id.layoutContainer)
     RelativeLayout layoutContainer;
 
     private Recipe currentRecipe;
