@@ -17,6 +17,7 @@ import com.facebook.login.widget.LoginButton;
 import java.util.Arrays;
 
 import butterknife.BindView;
+import edu.galileo.android.facebookrecipes.R;
 import butterknife.ButterKnife;
 import edu.galileo.android.facebookrecipes.recipemain.ui.RecipeMainActivity;
 

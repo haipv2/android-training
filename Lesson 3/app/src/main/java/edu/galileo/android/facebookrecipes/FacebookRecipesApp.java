@@ -48,7 +48,7 @@ public class FacebookRecipesApp extends Application {
     }
 
     private void initFacebook() {
-        FacebookSdk.sdkInitialize(this);
+//        FacebookSdk.sdkInitialize(this);
     }
 
     public void logout() {

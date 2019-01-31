@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
 
 import edu.galileo.android.facebookrecipes.libs.base.ImageLoader;
 
@@ -23,16 +24,12 @@ public class GlideImageLoader implements ImageLoader {
     public void load(ImageView imageView, String URL) {
         if (onFinishedLoadingListener != null) {
             glideRequestManager
-                    .load(URL)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .centerCrop()
+                    .load(URL).apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL).centerCrop())
                     .listener(onFinishedLoadingListener)
                     .into(imageView);
         } else {
             glideRequestManager
-                    .load(URL)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .centerCrop()
+                    .load(URL).apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL).centerCrop())
                     .into(imageView);
         }
     }

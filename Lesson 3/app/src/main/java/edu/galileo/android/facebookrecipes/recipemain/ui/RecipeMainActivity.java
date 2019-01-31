@@ -2,6 +2,7 @@ package edu.galileo.android.facebookrecipes.recipemain.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
@@ -16,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
@@ -76,13 +79,13 @@ public class RecipeMainActivity extends AppCompatActivity implements RecipeMainV
     private void setupImageLoader() {
         RequestListener glideRequestListener = new RequestListener() {
             @Override
-            public boolean onException(Exception e, Object model, Target target, boolean isFirstResource) {
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target target, boolean isFirstResource) {
                 presenter.imageError(e.getLocalizedMessage());
                 return false;
             }
 
             @Override
-            public boolean onResourceReady(Object resource, Object model, Target target, boolean isFromMemoryCache, boolean isFirstResource) {
+            public boolean onResourceReady(Object resource, Object model, Target target, DataSource dataSource, boolean isFirstResource) {
                 presenter.imageReady();
                 return false;
             }
