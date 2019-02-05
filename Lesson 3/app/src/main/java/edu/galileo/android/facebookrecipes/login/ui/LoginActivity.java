@@ -10,16 +10,17 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import java.util.Arrays;
 
 import butterknife.BindView;
-import edu.galileo.android.facebookrecipes.R;
 import butterknife.ButterKnife;
+import edu.galileo.android.facebookrecipes.R;
 import edu.galileo.android.facebookrecipes.recipemain.ui.RecipeMainActivity;
+
+import static android.provider.ContactsContract.Intents.Insert.EMAIL;
 
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btnLogin)
@@ -39,25 +40,53 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         callbackManager = CallbackManager.Factory.create();
-        btnLogin.setPublishPermissions(Arrays.asList("publish_actions"));
+
+//        btnLogin = (LoginButton) findViewById(R.id.login_button);
+        btnLogin.setReadPermissions(Arrays.asList(EMAIL));
+        // If you are using in a fragment, call loginButton.setFragment(this);
+
+        // Callback registration
         btnLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                // App code
                 navigateToMainScreen();
             }
 
             @Override
             public void onCancel() {
-                Snackbar.make(container, R.string.login_cancel_error, Snackbar.LENGTH_SHORT).show();
+                // App code
+                Snackbar.make(container, R.string.login_cancel_error, Snackbar.LENGTH_LONG).show();
             }
 
             @Override
-            public void onError(FacebookException error) {
+            public void onError(FacebookException exception) {
+                // App code
                 String msgError = String.format(getString(R.string.login_error),
-                                                error.getLocalizedMessage());
-                Snackbar.make(container, msgError, Snackbar.LENGTH_SHORT).show();
+                        exception.getLocalizedMessage());
+                Snackbar.make(container, msgError, Snackbar.LENGTH_LONG).show();
             }
         });
+
+//        btnLogin.setPublishPermissions(Arrays.asList("publish_actions"));
+//        btnLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//            @Override
+//            public void onSuccess(LoginResult loginResult) {
+//                navigateToMainScreen();
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//                Snackbar.make(container, R.string.login_cancel_error, Snackbar.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onError(FacebookException error) {
+//                String msgError = String.format(getString(R.string.login_error),
+//                                                error.getLocalizedMessage());
+//                Snackbar.make(container, msgError, Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
